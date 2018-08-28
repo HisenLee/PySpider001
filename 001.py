@@ -3,7 +3,7 @@
 
 'a test module : Spider Doc'
 
-__author__='Allen'  # add author
+__author__='HisenLee'  # add author
 
 import urllib.request
 # 读取百度的网页  timeout 单位是秒
