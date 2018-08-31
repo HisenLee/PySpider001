@@ -135,6 +135,40 @@ print(result)
 # .*[表示任意个除了\n和\r之外的字符]
 # .*?[表示任意个除了\n和\r之外的字符，尽可能少的匹配，懒惰模式]
 
+# 学习正则的优秀网站：https://regexr.com/
+# Cheatsheet 备忘单
+# 1st--->Character classes 字符类
+# 	.			any character except newline 匹配除换行符之外的任何单个字符
+#	\w\d\s		word,digit,whitespace        匹配任何单个字母字符，数字，空白符
+#	\W\D\S		not word, digit, whitespace	 匹配除了字母，数字，空白符之外的其他单个字符
+#	[abc]		any of a,b,or c				 匹配a,b,c中的任意一个
+#	[^abc]		not a, b, or c				 匹配除了a, b, c之外的任意一个字符
+#	[a-g]		character between a & g      匹配a-g的任意字符
+#
+# 2nd--->Anchors 边界锚点/边界限定符，匹配的是字符串，而不是单个字符
+#	^abc$		start/end of the string		 以abc开始或者结束
+#	\b \B		word, not-word boundary		 以某个字符为右边界/或者不为右边界 a\b 以a为边界，可以匹配bba, 不可以匹配abb。 而a\B匹配不在右边界的字符a
+#
+# 3rd--->Escaped characters 转义字符
+#	\. \* \\	escaped special characters	 转义特殊字符
+#	\t \n \r	tab, linefeed, carriage return  制表符， 换行符， 回车符
+#
+# 4th--->Groups & Lookaround  组&查看断言
+#	(abc)		capture group					捕获组，匹配字符串整体abc, 把元素组合到一起匹配。符合捕获组中匹配到的字符串会被保存到内存中，供后续引用
+#	\1			backreference to group #1		回溯引用第一组的结果 \2回溯引用第二组的结果 (abc)(aaa)ddd(bbb)\2  会匹配abcaaadddbbbaaa
+#	(?:abc)		non-capturing group				匹配(abc)组之后，不保存到内存中
+#	(?=abc)		positive lookahead 				my(?=abc) my后边有abc, 就匹配成功，返回my, 不返回abc, abc只做检查依据
+#	(?!abc)		negative lookahead				my(?!abc) my后边没有abc, 就匹配成功，返回my。否则匹配失败
+#
+# 5th--->Quantifiers & Alternation 
+# 量词和交替[量词其实就是限定了匹配次数，默认情况下，两次是贪婪的，会尽可能多的匹配；而交替实际就是懒惰模式，尽可能少的匹配]
+#	a* a+ a?	0 or more{0,}, 1 or more{1,}, 0 or 1{0,1}
+#	a{5} a{2,}	exactly five, two, or more
+#	a{1,3}		between one & tbree
+#	a+? a{2,}?	match as few as possible
+#	ab|cd		match ab or cd
+#
+
 # Cookie/Session
 # 因为HTTP协议是无状态的，所有需要通过cookie/session来保存会话状态, cookie会把信息存在客户端，
 # session会把信息存在服务器端
