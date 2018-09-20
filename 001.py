@@ -135,7 +135,7 @@ print(result)
 # .*[表示任意个除了\n和\r之外的字符]
 # .*?[表示任意个除了\n和\r之外的字符，尽可能少的匹配，懒惰模式]
 
-# 学习正则的优秀网站：https://regexr.com/
+
 # Cheatsheet 备忘单
 # 1st--->Character classes 字符类
 # 	.			any character except newline 匹配除换行符之外的任何单个字符
@@ -160,14 +160,20 @@ print(result)
 #	(?=abc)		positive lookahead 				my(?=abc) my后边有abc, 就匹配成功，返回my, 不返回abc, abc只做检查依据
 #	(?!abc)		negative lookahead				my(?!abc) my后边没有abc, 就匹配成功，返回my。否则匹配失败
 #
-# 5th--->Quantifiers & Alternation 
-# 量词和交替[量词其实就是限定了匹配次数，默认情况下，两次是贪婪的，会尽可能多的匹配；而交替实际就是懒惰模式，尽可能少的匹配]
+# 5th--->Quantifiers & Alternation 量词和交替[量词其实就是限定了匹配次数，默认情况下，两次是贪婪的，会尽可能多的匹配交替实际就是懒惰模式，尽可能少的匹配]
 #	a* a+ a?	0 or more{0,}, 1 or more{1,}, 0 or 1{0,1}
 #	a{5} a{2,}	exactly five, two, or more
 #	a{1,3}		between one & tbree
 #	a+? a{2,}?	match as few as possible
 #	ab|cd		match ab or cd
 #
+
+# python中用正则获取两个字符串之间的数据, 比如获取该字符串aaa46476566464646456bbb中aaa与bbb之间的数据
+mystr = "aaa464646464646bbb"
+pattern = '.*aaa(.*)bbb.*'
+result = re.findall(patttern, mystr)
+print(result)
+
 
 # Cookie/Session
 # 因为HTTP协议是无状态的，所有需要通过cookie/session来保存会话状态, cookie会把信息存在客户端，
